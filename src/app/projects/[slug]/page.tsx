@@ -33,7 +33,9 @@ export async function generateStaticParams(): Promise<{ slug: string }[]> {
 // Generate metadata for SEO
 export async function generateMetadata({
   params,
-}: ProjectPageProps): Promise<Metadata> {
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
   try {
     const project = await fetchProjectBySlug(params.slug);
 
