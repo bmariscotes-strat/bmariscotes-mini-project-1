@@ -6,12 +6,6 @@ import Image from "next/image";
 import { Metadata } from "next";
 import { ReactElement } from "react";
 
-interface ProjectPageProps {
-  params: {
-    slug: string;
-  };
-}
-
 // Generate static params for all projects
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
   try {
@@ -56,9 +50,12 @@ export async function generateMetadata({
   }
 }
 
+// Page component
 export default async function ProjectPage({
   params,
-}: ProjectPageProps): Promise<ReactElement> {
+}: {
+  params: { slug: string };
+}): Promise<ReactElement> {
   const { slug } = params;
 
   try {
@@ -78,22 +75,23 @@ export default async function ProjectPage({
         <div className="bg-white rounded-lg shadow-lg overflow-hidden">
           {/* Hero Image */}
           <div className="relative h-64 md:h-96 bg-gray-200">
-            {project.type === "system" ? (
-              <video
-                src={`/media/system/${project.image}`}
-                controls
-                className="w-full h-full object-cover"
-              />
-            ) : (
-              <Image
-                src={`/media/ui/${project.image}`}
-                alt={project.title}
-                fill
-                className="object-cover"
-                priority
-                sizes="100vw"
-              />
-            )}
+            {project.image &&
+              (project.type === "system" ? (
+                <video
+                  src={`/media/system/${project.image}`}
+                  controls
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <Image
+                  src={`/media/ui/${project.image}`}
+                  alt={project.title}
+                  fill
+                  className="object-cover"
+                  priority
+                  sizes="100vw"
+                />
+              ))}
           </div>
 
           {/* Content */}
