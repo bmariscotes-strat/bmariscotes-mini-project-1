@@ -5,14 +5,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { Metadata } from "next";
 
-type PageProps = {
+interface PageProps {
   params: {
     slug: string;
   };
-};
+}
 
 // Static paths generation
-export async function generateStaticParams(): Promise<PageProps["params"][]> {
+export async function generateStaticParams() {
   try {
     const projects = await fetchProjects();
     return projects.map((project: Project) => ({
@@ -47,7 +47,11 @@ export async function generateMetadata({
 }
 
 // Actual page
-export default async function ProjectPage({ params }: PageProps) {
+export default async function ProjectPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const project = await fetchProjectBySlug(params.slug);
 
   if (!project) {
