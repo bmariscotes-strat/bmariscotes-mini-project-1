@@ -1,7 +1,7 @@
 "use client";
 
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Card, CardHeader, CardContent } from "@/components/ui/Card";
+import { Button } from "@/components/ui/Button";
 import Image from "next/image";
 import Link from "next/link";
 import { ProjectCardProps } from "@/types/project";
