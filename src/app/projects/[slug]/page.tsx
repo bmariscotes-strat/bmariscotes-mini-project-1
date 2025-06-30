@@ -6,9 +6,9 @@ import Image from "next/image";
 import { Metadata } from "next";
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 // Static paths generation
@@ -29,7 +29,8 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   try {
-    const project = await fetchProjectBySlug(params.slug);
+    const { slug } = await params;
+    const project = await fetchProjectBySlug(slug);
     return {
       title: project.title,
       description: project.description,
@@ -47,12 +48,9 @@ export async function generateMetadata({
 }
 
 // Actual page
-export default async function ProjectPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const project = await fetchProjectBySlug(params.slug);
+export default async function ProjectPage({ params }: PageProps) {
+  const { slug } = await params;
+  const project = await fetchProjectBySlug(slug);
 
   if (!project) {
     notFound();
