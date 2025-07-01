@@ -4,12 +4,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { Metadata } from "next";
-
-interface PageProps {
-  params: Promise<{
-    slug: string;
-  }>;
-}
+import { PageProps } from "@/types/page";
 
 // Static paths generation
 export async function generateStaticParams() {
