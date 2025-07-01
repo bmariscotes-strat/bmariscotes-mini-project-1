@@ -2,6 +2,9 @@ import { fetchProjects } from "@/lib/api";
 import { Project } from "@/types/project";
 import { ProjectCard } from "@/components/shared/ProjectCard";
 import { ReactElement } from "react";
+import { createPageMetadata } from "@/lib/metadata";
+
+export const metadata = createPageMetadata("Projects", "All of my projects.");
 
 export default async function ProjectsPage(): Promise<ReactElement> {
   let projects: Project[] = [];
