@@ -20,9 +20,7 @@ export async function generateStaticParams() {
 }
 
 // Metadata generation
-export async function generateMetadata({
-  params,
-}: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   try {
     const { slug } = await params;
     const project = await fetchProjectBySlug(slug);
@@ -33,6 +31,7 @@ export async function generateMetadata({
         title: project.title,
         description: project.description,
         images: [project.image],
+        url: project.link,
       },
     };
   } catch {
@@ -53,21 +52,14 @@ export default async function ProjectPage({ params }: PageProps) {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <Link
-        href="/projects"
-        className="text-blue-500 hover:text-blue-700 mb-6 inline-flex items-center"
-      >
+      <Link href="/projects" className="text-blue-500 hover:text-blue-700 mb-6 inline-flex items-center">
         ← Back to Projects
       </Link>
 
       <div className="bg-white rounded-lg shadow-lg overflow-hidden">
         <div className="relative h-64 md:h-96 bg-gray-200">
           {project.type === "system" ? (
-            <video
-              src={`/media/system/${project.image}`}
-              controls
-              className="w-full h-full object-cover"
-            />
+            <video src={`/media/system/${project.image}`} controls className="w-full h-full object-cover" />
           ) : (
             <Image
               src={`/media/ui/${project.image}`}
@@ -82,9 +74,7 @@ export default async function ProjectPage({ params }: PageProps) {
 
         <div className="p-8">
           <h1 className="text-4xl font-bold mb-4">{project.title}</h1>
-          <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-            {project.description}
-          </p>
+          <p className="text-lg text-gray-700 mb-6 leading-relaxed">{project.description}</p>
 
           <div className="border-t pt-6">
             <h3 className="text-xl font-semibold mb-3">Project Information</h3>
@@ -95,27 +85,21 @@ export default async function ProjectPage({ params }: PageProps) {
               </div>
               <div>
                 <strong className="text-gray-700">Status:</strong>
-                <span className="ml-2 bg-green-100 text-green-800 px-2 py-1 rounded text-sm">
-                  Active
-                </span>
+                <span className="ml-2 bg-green-100 text-green-800 px-2 py-1 rounded text-sm">Active</span>
               </div>
             </div>
           </div>
 
           <div className="border-t pt-6 mt-6">
             <div className="flex gap-4">
-              <button
-                type="button"
-                className="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 transition-colors"
-              >
-                View Live Demo
-              </button>
-              <button
-                type="button"
-                className="border border-gray-300 text-gray-700 px-6 py-2 rounded hover:bg-gray-50 transition-colors"
-              >
-                View Source Code
-              </button>
+              <a href={project.link} target="_blank" rel="noopener noreferrer">
+                <button
+                  type="button"
+                  className="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 transition-colors"
+                >
+                  {project.type === "ui" ? "View Figma" : "View Source Code"}
+                </button>
+              </a>
             </div>
           </div>
         </div>

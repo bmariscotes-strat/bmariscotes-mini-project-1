@@ -15,20 +15,6 @@
   font-family: var(--font-stangith);
 }
 
-p {
-  margin-bottom: 0 !important;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  line-height: 0;
-}
-
-main {
-  padding-bottom: 2em;
-}
-
 .intro {
   padding-top: 2rem;
   height: 80dvh;

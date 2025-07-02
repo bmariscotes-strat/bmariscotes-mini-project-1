@@ -28,9 +28,7 @@ export default async function ProjectsPage(): Promise<ReactElement> {
   }
 
   const uiProjects = projects.filter((project) => project.type === "ui");
-  const systemProjects = projects.filter(
-    (project) => project.type === "system"
-  );
+  const systemProjects = projects.filter((project) => project.type === "system");
 
   return (
     <div className="container mx-auto px-4 py-8 space-y-12">
