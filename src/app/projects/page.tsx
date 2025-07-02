@@ -3,6 +3,7 @@ import { Project } from "@/types/project";
 import { ProjectCard } from "@/components/shared/ProjectCard";
 import { ReactElement } from "react";
 import { createPageMetadata } from "@/lib/metadata";
+import Breadcrumbs from "@/components/shared/BreadCrumbsNav";
 
 export const metadata = createPageMetadata("Projects", "All of my projects.");
 
@@ -32,25 +33,34 @@ export default async function ProjectsPage(): Promise<ReactElement> {
 
   return (
     <div className="container mx-auto px-4 py-8 space-y-12">
-      <h1 className="text-3xl font-bold">My Projects</h1>
-
-      {/* UI Projects Section */}
       <section>
-        <h2 className="text-2xl font-semibold mb-4">UI Projects</h2>
-        {uiProjects.length === 0 ? (
-          <p className="text-gray-600">No UI projects found.</p>
-        ) : (
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {uiProjects.map((project) => (
-              <ProjectCard key={project.slug} project={project} />
-            ))}
-          </div>
-        )}
+        <div className="pl-1 pb-5">
+          <Breadcrumbs
+            items={[
+              { label: "Home", href: "/" },
+              { label: "Projects", href: "/projects" },
+            ]}
+          />
+        </div>
+
+        {/* UI Projects Section */}
+        <section>
+          <h2 className="text-3xl text-gray-900 font-bold mb-4 pl-1">UI Projects</h2>
+          {uiProjects.length === 0 ? (
+            <p className="text-gray-600">No UI projects found.</p>
+          ) : (
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {uiProjects.map((project) => (
+                <ProjectCard key={project.slug} project={project} />
+              ))}
+            </div>
+          )}
+        </section>
       </section>
 
       {/* System Projects Section */}
       <section>
-        <h2 className="text-2xl font-semibold mb-4">System Projects</h2>
+        <h2 className="text-3xl text-gray-900 font-bold mb-4">System Projects</h2>
         {systemProjects.length === 0 ? (
           <p className="text-gray-600">No system projects found.</p>
         ) : (

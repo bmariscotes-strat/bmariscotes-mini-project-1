@@ -5,14 +5,7 @@ import Image from "next/image";
 import { Metadata } from "next";
 import { Button } from "@/components/ui/Button";
 import { PageProps } from "@/types/page";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
+import Breadcrumbs from "@/components/shared/BreadCrumbsNav";
 import { Badge } from "@/components/ui/badge";
 import { TechnologiesList } from "@/lib/tech-icon";
 import clsx from "clsx";
@@ -83,22 +76,10 @@ export default async function ProjectPage({ params }: PageProps) {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="pb-5">
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/">Home</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/projects">Projects</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>{project.title}</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
+      <div className="pl-1 pb-5">
+        <Breadcrumbs
+          items={[{ label: "Home", href: "/" }, { label: "Projects", href: "/projects" }, { label: project.title }]}
+        />
       </div>
 
       <div className="bg-white rounded-lg shadow-lg overflow-hidden">
