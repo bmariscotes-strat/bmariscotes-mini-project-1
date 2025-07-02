@@ -47,7 +47,7 @@ export default function HomePage() {
   }, [pathname]);
 
   return (
-    <div className="h-full">
+    <div className="h-full no-scrollbar">
       <section ref={introRef} className="intro h-screen overflow-hidden">
         <div className="flex flex-col text-container">
           <Image ref={logoRef} src="/brand/logo-w.png" className="logo" alt="Logo" width={1588} height={1284} />
@@ -62,7 +62,7 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div className="cloud-container">
+        <div className="cloud-container overflow-hidden">
           <Image ref={cloudRef} src="/media/cloud.png" alt="Cloud" width={1440} height={389} />
         </div>
       </section>

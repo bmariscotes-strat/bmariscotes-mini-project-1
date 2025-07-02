@@ -131,3 +131,12 @@
 #global-loader {
   transition: opacity 0.5s ease;
 }
+
+.no-scrollbar {
+  overflow: hidden;
+  height: 100%;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
