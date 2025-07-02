@@ -5,6 +5,7 @@ export interface Project {
   image: string;
   link: string;
   type: "ui" | "system";
+  status: "complete" | "ongoing" | "discontinued";
 }
 
 export interface ApiError {

@@ -1,10 +1,26 @@
 import { fetchProjectBySlug, fetchProjects } from "@/lib/api";
 import { Project } from "@/types/project";
 import { notFound } from "next/navigation";
-import Link from "next/link";
 import Image from "next/image";
 import { Metadata } from "next";
 import { PageProps } from "@/types/page";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import { Badge } from "@/components/ui/badge";
+import clsx from "clsx";
+
+// Status badge renders
+const statusVariants: Record<string, "success" | "info" | "destructive"> = {
+  complete: "success",
+  ongoing: "info",
+  discontinued: "destructive",
+};
 
 // Static paths generation
 export async function generateStaticParams() {
@@ -27,6 +43,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return {
       title: project.title,
       description: project.description,
+      other: {
+        status: project.status,
+      },
       openGraph: {
         title: project.title,
         description: project.description,
@@ -52,9 +71,23 @@ export default async function ProjectPage({ params }: PageProps) {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <Link href="/projects" className="text-blue-500 hover:text-blue-700 mb-6 inline-flex items-center">
-        ← Back to Projects
-      </Link>
+      <div className="pb-5">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/">Home</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/projects">Projects</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>{project.title}</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      </div>
 
       <div className="bg-white rounded-lg shadow-lg overflow-hidden">
         <div className="relative h-64 md:h-96 bg-gray-200">
@@ -85,7 +118,9 @@ export default async function ProjectPage({ params }: PageProps) {
               </div>
               <div>
                 <strong className="text-gray-700">Status:</strong>
-                <span className="ml-2 bg-green-100 text-green-800 px-2 py-1 rounded text-sm">Active</span>
+                <Badge variant={statusVariants[project.status] ?? "secondary"} className={clsx("ml-2")}>
+                  {project.status.charAt(0).toUpperCase() + project.status.slice(1)}
+                </Badge>
               </div>
             </div>
           </div>
