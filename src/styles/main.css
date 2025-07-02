@@ -1,0 +1,92 @@
+@import "./medias.css";
+
+@font-face {
+  font-family: "Stangith";
+  src: url("/public/fonts/stangith.ttf") format("truetype");
+}
+
+.font-karla {
+  font-family: var(--font-karla);
+}
+.font-kotta {
+  font-family: var(--font-kotta-one);
+}
+.font-stangith {
+  font-family: var(--font-stangith);
+}
+
+p {
+  margin-bottom: 0 !important;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+}
+
+main {
+  padding-bottom: 2em;
+}
+
+.intro {
+  padding-top: 2rem;
+  height: 80dvh;
+  background-color: var(--sub);
+  font-family: "Stangith", sans-serif;
+
+  .text-container {
+    height: 68%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo {
+    width: 100px;
+    height: auto;
+  }
+
+  .name {
+    font-size: 8rem;
+  }
+
+  .tag-line {
+    letter-spacing: 3px;
+    font-size: 2rem;
+    font-style: italic;
+    font-family: "Kotta One";
+  }
+
+  .desc {
+    font-family: "Kotta One";
+    letter-spacing: 3px;
+    font-size: 1rem;
+  }
+}
+
+.intro p {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+  line-height: 1 !important;
+}
+
+.white-bg-section {
+  background-color: var(--white);
+}
+
+.cloud-container img {
+  width: 100%;
+  height: auto;
+}
+
+.intro div:last-child {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.intro div:last-child img {
+  width: 100%;
+  height: auto;
+}
