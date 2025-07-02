@@ -3,6 +3,7 @@ import { Project } from "@/types/project";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { Metadata } from "next";
+import { Button } from "@/components/ui/Button";
 import { PageProps } from "@/types/page";
 import {
   Breadcrumb,
@@ -13,6 +14,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Badge } from "@/components/ui/badge";
+import { TechnologiesList } from "@/lib/tech-icon";
 import clsx from "clsx";
 
 // Status badge renders
@@ -40,15 +42,25 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   try {
     const { slug } = await params;
     const project = await fetchProjectBySlug(slug);
+
+    // Create a description that includes technologies if available
+    const enhancedDescription = project.technologies
+      ? `${project.description} Built with: ${project.technologies.join(", ")}`
+      : project.description;
+
     return {
       title: project.title,
-      description: project.description,
+      description: enhancedDescription,
+      keywords: project.technologies, // Add technologies as keywords for SEO
       other: {
         status: project.status,
+        ...(project.technologies && {
+          technologies: project.technologies.join(", "),
+        }),
       },
       openGraph: {
         title: project.title,
-        description: project.description,
+        description: enhancedDescription,
         images: [project.image],
         url: project.link,
       },
@@ -111,11 +123,24 @@ export default async function ProjectPage({ params }: PageProps) {
 
           <div className="border-t pt-6">
             <h3 className="text-xl font-semibold mb-3">Project Information</h3>
-            <div className="grid md:grid-cols-2 gap-4">
+            <div className="grid md:grid-cols-3 gap-4">
+              {/* Project ID */}
               <div>
                 <strong className="text-gray-700">Project ID:</strong>
                 <span className="ml-2 text-gray-600">{project.slug}</span>
               </div>
+              {project.type === "system" && project.technologies && (
+                <div className="technologies-section">
+                  <strong className="text-gray-700">Technologies Used: </strong>
+                  <TechnologiesList
+                    technologies={project.technologies}
+                    size="sm"
+                    showIcon={true}
+                    className="flex flex-wrap gap-2 mt-2"
+                  />
+                </div>
+              )}
+              {/* Status */}
               <div>
                 <strong className="text-gray-700">Status:</strong>
                 <Badge variant={statusVariants[project.status] ?? "secondary"} className={clsx("ml-2")}>
@@ -128,12 +153,7 @@ export default async function ProjectPage({ params }: PageProps) {
           <div className="border-t pt-6 mt-6">
             <div className="flex gap-4">
               <a href={project.link} target="_blank" rel="noopener noreferrer">
-                <button
-                  type="button"
-                  className="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 transition-colors"
-                >
-                  {project.type === "ui" ? "View Figma" : "View Source Code"}
-                </button>
+                <Button>{project.type === "ui" ? "View Figma" : "View Source Code"}</Button>
               </a>
             </div>
           </div>

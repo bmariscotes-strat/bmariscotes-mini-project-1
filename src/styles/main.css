@@ -76,3 +76,23 @@
   width: 100%;
   height: auto;
 }
+
+.video-gif {
+  pointer-events: none;
+}
+
+.video-gif::-webkit-media-controls {
+  display: none !important;
+}
+
+.video-gif::-webkit-media-controls-panel {
+  display: none !important;
+}
+
+.video-gif::-webkit-media-controls-play-button {
+  display: none !important;
+}
+
+.video-gif::-webkit-media-controls-start-playback-button {
+  display: none !important;
+}

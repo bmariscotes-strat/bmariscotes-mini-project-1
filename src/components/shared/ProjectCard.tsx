@@ -14,8 +14,13 @@ export function ProjectCard({ project }: ProjectCardProps) {
         {project.type === "system" ? (
           <video
             src={`/media/system/${project.image}`}
-            controls
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover pointer-events-none"
+            autoPlay
+            loop
+            muted
+            playsInline
+            disablePictureInPicture
+            disableRemotePlayback
           />
         ) : (
           <Image
