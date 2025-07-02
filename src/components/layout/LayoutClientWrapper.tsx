@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import Loader from "./Loader";
-import { ReactNode } from "react";
+import { ReactNode, Suspense } from "react";
 
 export default function LayoutClientWrapper({ children }: { children: ReactNode }) {
   const pathname = usePathname();
@@ -12,7 +12,11 @@ export default function LayoutClientWrapper({ children }: { children: ReactNode 
 
   return (
     <>
-      {showLoader && <Loader />}
+      {showLoader && (
+        <Suspense fallback={null}>
+          <Loader />
+        </Suspense>
+      )}
       {children}
     </>
   );
