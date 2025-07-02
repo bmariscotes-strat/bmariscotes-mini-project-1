@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
-import { useBodyBackground } from "./hooks/useBodyBackground";
+import { useBodyBackground } from "../hooks/useBodyBackground";
 import { gsapAnimations } from "@/lib/gsap-animation";
 import { usePathname } from "next/navigation";
 import gsap from "gsap";
@@ -39,7 +39,7 @@ export default function HomePage() {
       });
     }
 
-    // Cleanup function using captured values
+    // Cleanup
     return () => {
       const allElements = [logo, tagLine, name, desc, cloud, intro].filter(Boolean);
       gsap.killTweensOf(allElements);

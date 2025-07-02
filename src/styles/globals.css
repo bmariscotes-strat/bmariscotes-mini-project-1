@@ -55,7 +55,7 @@
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.799 0.129 48.26);
+  --accent: oklab(79.128% 0.07754 0.05908);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
@@ -117,4 +117,17 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#global-loader {
+  transition: opacity 0.5s ease;
 }
