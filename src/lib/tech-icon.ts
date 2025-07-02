@@ -25,10 +25,13 @@ import {
   SiGit,
   SiFigma,
   SiAdobephotoshop,
+  SiFirebase,
+  SiFramer,
+  SiGreensock,
 } from "react-icons/si";
 
 interface TechConfig {
-  icon: React.ComponentType<{ className?: string; style?: React.CSSProperties }>;
+  icon: React.ComponentType<{ className?: string; style?: React.CSSProperties }> | null;
   color: string;
 }
 
@@ -58,6 +61,17 @@ const TECH_ICONS: Record<string, TechConfig> = {
   GitHub: { icon: SiGithub, color: "#181717" },
   Figma: { icon: SiFigma, color: "#F24E1E" },
   Photoshop: { icon: SiAdobephotoshop, color: "#31A8FF" },
+  Firebase: { icon: SiFirebase, color: "#FFCA28" },
+  "Framer Motion": { icon: SiFramer, color: "#0055FF" },
+  GSAP: { icon: SiGreensock, color: "#88CE02" },
+  // Text-only badges for technologies without icons
+  Pinia: { icon: null, color: "#FFD54F" },
+  "Element Plus": { icon: null, color: "#409EFF" },
+  "ShadCN UI": { icon: null, color: "#000000" },
+  "Hugging Face": { icon: null, color: "#FF9D00" },
+  Axios: { icon: null, color: "#5A29E4" },
+  Zustand: { icon: null, color: "#FF6B35" },
+  "TipTap React": { icon: null, color: "#000000" },
 };
 
 interface TechnologyBadgeProps {
