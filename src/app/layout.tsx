@@ -1,17 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "../styles/globals.css";
 import Header from "../components/layout/Header";
+import { kottaOne, karla, stangith } from "@/lib/fonts";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+gsap.registerPlugin(ScrollTrigger);
 
 export const metadata: Metadata = {
   title: "Biella | Portfolio",
@@ -24,8 +18,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+    <html lang="en" className={`${karla.variable} ${kottaOne.variable} ${stangith.variable}`}>
+      <body className={karla.className}>
         <div className="h-full flex flex-col">
           <Header />
           <main className="flex-1 overflow-hidden">{children}</main>
