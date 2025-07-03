@@ -1,16 +1,7 @@
 import { Project } from "@/types/project";
+import { Experience } from "@/types/experience";
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL as string;
-
-export interface Experience {
-  id: string;
-  desc: string;
-  img?: string;
-  startDate?: string;
-  endDate?: string;
-  company?: string;
-  role?: string;
-}
 
 export async function fetchProjects(): Promise<Project[]> {
   try {
