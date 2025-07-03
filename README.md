@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
+  <img src="public/brand/logo.png" alt="Logo" width="60" />
+</div>
 
-## Getting Started
+<br>
+<div align="center">
+<h1> Biella Mariscotes
+</h1>
+</div>
 
-First, run the development server:
+#### ˚ʚ♡ɞ˚ ‎ [View Live Site](https://biella-dev.vercel.app)
+
+Welcome to my personal developer portfolio! This project showcases selected web development projects, UI/UX designs, and personal experiments, highlighting my proficiency in modern web technologies.
+
+<br>
+
+## 📸 Overview
+
+This portfolio was built to reflect both my technical skills and design sense through interactive, accessible, and thoughtfully crafted pages. It includes project showcases, an about section, and a contact form.
+
+Key features:
+
+- Project galleries with smooth animations
+- Responsive, mobile-first design
+- Loader and route-based transitions
+- Contact/Leave a message form
+- Accessible, clean UI using **shadcn/ui** components and **TailwindCSS**
+- Optimized image handling with **Next.js Image**
+
+<br>
+
+## ⚙️ Tech Stack
+
+| Category           | Tools / Libraries                                                                                                  |
+| :----------------- | :----------------------------------------------------------------------------------------------------------------- |
+| Frontend           | [Next.js](https://nextjs.org/), [React](https://reactjs.org/), [TypeScript](https://www.typescriptlang.org/)       |
+| Styling            | [Tailwind CSS](https://tailwindcss.com/), [shadcn/ui](https://ui.shadcn.dev/), [Lucide Icons](https://lucide.dev/) |
+| Animations         | [Framer Motion](https://www.framer.com/motion/), [GSAP](https://greensock.com/gsap/)                               |
+| Fonts              | Google Fonts via `next/font`                                                                                       |
+| Forms & Validation | [Formspree](https://formspree.io/), Controlled Components, Custom Hooks                                            |
+| Hosting            | [Vercel](https://vercel.com/)                                                                                      |
+
+<br>
+
+## 🗂️ Project Structure
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+.
+├── components/
+│   ├── layout/
+│   ├── ui/
+│   └── projects/
+├── app/
+│   ├── index.tsx
+│   ├── about.tsx
+│   ├── projects.tsx
+│   └── contact.tsx
+├── public/
+│   ├── experience/
+│   ├── status/
+│   ├── system/
+│   ├── ui/
+├── styles/
+├── lib/
+└── README.md
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<br>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+<br>
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🙌 Acknowledgements
 
-## Learn More
+- [shadcn/ui](https://ui.shadcn.dev/)
+- [Lucide Icons](https://lucide.dev/)
+- [Framer Motion](https://www.framer.com/motion/)
+- [GSAP](https://greensock.com/gsap/)
+- Fonts via [Google Fonts](https://fonts.google.com/)
 
-To learn more about Next.js, take a look at the following resources:
+<br>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📬 Contact
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Want to collaborate or have feedback? Reach out via:
 
-## Deploy on Vercel
+- 📧 [bm.mariscotes@gmail.com](mailto:your-email@gmail.com)
+- 🌐 [LinkedIn](https://linkedin.com/in/biellamariscotes)
+- 💻 [GitHub](https://github.com/biellamariscotes)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+_© 2025 Biella Mariscotes. All rights reserved._
+
+<hr>
