@@ -1,8 +1,6 @@
 <div align="center">
-  <img src="public/brand/logo.png" alt="Logo" width="60" />
+  <img src="public/brand/logo.png" alt="Logo" width="90" />
 </div>
-
-<br>
 <div align="center">
 <h1> Biella Mariscotes
 </h1>
