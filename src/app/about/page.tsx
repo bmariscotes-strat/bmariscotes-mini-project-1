@@ -1,12 +1,57 @@
 "use client";
 
 import Image from "next/image";
+import { useState, useEffect } from "react";
 import { useRoughNotation } from "../../hooks/useRoughNotation";
 import { Button } from "@/components/ui/Button";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { TechnologyBadge } from "@/lib/tech-icon";
+import { fetchExperiences, Experience } from "@/lib/api";
+
+// Tech stack data - using your existing tech-icon library
+const techStack = [
+  "React",
+  "Next.js",
+  "TypeScript",
+  "Tailwind CSS",
+  "Node.js",
+  "PostgreSQL",
+  "MongoDB",
+  "Docker",
+  "AWS",
+  "Git",
+  "JavaScript",
+  "Python",
+  "Express",
+  "Firebase",
+  "Vercel",
+  "Figma",
+];
 
 // Main component
 export default function About() {
   const { elementRef, handleMouseEnter, handleMouseLeave } = useRoughNotation();
+  const [experiences, setExperiences] = useState<Experience[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  // Fetch experiences on component mount
+  useEffect(() => {
+    const loadExperiences = async () => {
+      try {
+        setIsLoading(true);
+        const data = await fetchExperiences();
+        setExperiences(data);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "Failed to load experiences");
+        console.error("Error loading experiences:", err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadExperiences();
+  }, []);
 
   const handleResumeClick = () => {
     window.open("files/Resume.pdf", "_blank");
@@ -14,7 +59,8 @@ export default function About() {
 
   return (
     <section className="pt-10 px-6">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      {/* First Row - Profile Section */}
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-16">
         {/* Profile Image */}
         <div className="flex justify-center">
           <div className="w-60 md:w-90">
@@ -63,6 +109,143 @@ export default function About() {
           </div>
         </div>
       </div>
+
+      {/* Second Row - Tech Stack */}
+      <div className="max-w-6xl mx-auto mb-16">
+        <h2 className="text-2xl font-bold text-center mb-8">Tech Stack</h2>
+
+        {/* Scrolling Tech Stack */}
+        <div className="relative overflow-hidden">
+          <div className="flex animate-scroll space-x-4 pb-4">
+            {/* Duplicate the array for seamless scrolling */}
+            {[...techStack, ...techStack].map((tech, index) => (
+              <div key={`${tech}-${index}`} className="flex-shrink-0">
+                <TechnologyBadge
+                  technology={tech}
+                  size="md"
+                  showIcon={true}
+                  className="hover:shadow-md transition-shadow whitespace-nowrap"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Alternative: Static Grid Layout */}
+        <div className="hidden md:flex flex-wrap justify-center gap-4 mt-8">
+          {techStack.map((tech) => (
+            <TechnologyBadge
+              key={tech}
+              technology={tech}
+              size="md"
+              showIcon={true}
+              className="hover:shadow-md transition-all hover:scale-105"
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Third Row - Experiences Carousel */}
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-2xl font-bold text-center mb-8">Featured Experiences</h2>
+
+        {isLoading ? (
+          <div className="flex justify-center items-center h-64">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600"></div>
+          </div>
+        ) : error ? (
+          <div className="text-center text-red-600 bg-red-50 p-6 rounded-lg">
+            <p className="font-medium">Failed to load experiences</p>
+            <p className="text-sm mt-2">{error}</p>
+          </div>
+        ) : experiences.length === 0 ? (
+          <div className="text-center text-gray-500 p-6">
+            <p>No experiences found.</p>
+          </div>
+        ) : (
+          <Carousel className="w-full">
+            <CarouselContent className="-ml-2 md:-ml-4">
+              {experiences.map((experience) => (
+                <CarouselItem key={experience.id} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                  <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    {/* Experience Image */}
+                    <div className="relative h-48 bg-gray-200">
+                      {experience.img ? (
+                        <Image
+                          src={`/${experience.img}`}
+                          alt={experience.company || "Company logo"}
+                          fill
+                          className="object-cover"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            const parent = target.parentElement;
+                            if (parent) {
+                              target.style.display = "none";
+                              parent.innerHTML =
+                                '<div class="w-full h-full bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center"><span class="text-white text-lg font-semibold">Experience</span></div>';
+                            }
+                          }}
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center">
+                          <span className="text-white text-lg font-semibold">Experience</span>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Experience Content */}
+                    <div className="p-6">
+                      <h3 className="text-xl font-semibold mb-2">{experience.company}</h3>
+
+                      {/* Company and Role */}
+                      {(experience.company || experience.role) && (
+                        <div className="text-sm text-gray-600 mb-2">
+                          {experience.role && <span className="font-medium">{experience.role}</span>}
+                          {experience.company && experience.role && <span> at </span>}
+                          {experience.company && <span>{experience.company}</span>}
+                        </div>
+                      )}
+
+                      {/* Date Range */}
+                      {(experience.startDate || experience.endDate) && (
+                        <div className="text-sm text-gray-500 mb-3">
+                          {experience.startDate && new Date(experience.startDate).toLocaleDateString()}
+                          {experience.startDate && experience.endDate && " - "}
+                          {experience.endDate && new Date(experience.endDate).toLocaleDateString()}
+                        </div>
+                      )}
+
+                      <p className="text-gray-600 mb-4 line-clamp-3">{experience.description}</p>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+        )}
+      </div>
+
+      {/* Custom CSS for scrolling animation */}
+      <style jsx>{`
+        @keyframes scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+
+        .animate-scroll {
+          animation: scroll 20s linear infinite;
+        }
+
+        .animate-scroll:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
     </section>
   );
 }
