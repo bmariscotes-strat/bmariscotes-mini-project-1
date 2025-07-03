@@ -13,10 +13,14 @@ import { Experience } from "@/types/experience";
 const techStack = [
   "React",
   "Next.js",
+  "Vue.js",
   "TypeScript",
+  "Javascript",
+  "Bootstrap",
   "Tailwind CSS",
   "Node.js",
   "PostgreSQL",
+  "MySQL",
   "MongoDB",
   "Docker",
   "AWS",
@@ -27,6 +31,7 @@ const techStack = [
   "Firebase",
   "Vercel",
   "Figma",
+  "GSAP",
 ];
 
 // Main component
@@ -88,7 +93,7 @@ export default function About() {
                   ref={elementRef}
                   onMouseEnter={handleMouseEnter}
                   onMouseLeave={handleMouseLeave}
-                  className="cursor-pointer text-green-600 font-medium"
+                  className="cursor-pointer text-primary font-medium"
                 >
                   develop
                 </span>{" "}
@@ -97,13 +102,13 @@ export default function About() {
 
               <div className="text-base space-y-2 mb-6">
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec aliquam orci. Donec mollis maximus
-                  egestas. Aliquam viverra mi et tortor iaculis gravida eget ut ipsum. Integer faucibus metus nec purus
-                  molestie, at ornare enim blandit. Ut vitae dui iaculis, cursus orci vel, maximus nulla.{" "}
+                  A graduating student with a keen interest in creating web applications that (hopefully) don’t crash.
+                  am also exploring the fundamentals of machine learning and its potential applications in real-world
+                  scenarios.{" "}
                 </p>
               </div>
 
-              <Button variant="accent" onClick={handleResumeClick}>
+              <Button variant="accent" className="cursor-pointer" onClick={handleResumeClick}>
                 See Resume
               </Button>
             </div>
