@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/Button";
 import { Loader2 } from "lucide-react";
 import Image from "next/image";
-import { Mail, Phone, Linkedin, Github } from "lucide-react";
+import { Mail, Phone, Linkedin, Github, Instagram } from "lucide-react";
 import Breadcrumbs from "@/components/shared/BreadCrumbsNav";
 
 export default function ContactPage() {
@@ -64,6 +64,9 @@ export default function ContactPage() {
               </p>
               <p className="flex items-center gap-2">
                 <Phone size={18} className="text-primary" /> 0976-336-3224
+              </p>
+              <p className="flex items-center gap-2">
+                <Instagram size={18} className="text-primary" /> instagram.com/love.biella
               </p>
               <p className="flex items-center gap-2">
                 <Linkedin size={18} className="text-primary" />
