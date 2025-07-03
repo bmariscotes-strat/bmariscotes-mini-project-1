@@ -6,7 +6,8 @@ import { useRoughNotation } from "../../hooks/useRoughNotation";
 import { Button } from "@/components/ui/Button";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { TechnologyBadge } from "@/lib/tech-icon";
-import { fetchExperiences, Experience } from "@/lib/api";
+import { fetchExperiences } from "@/lib/api";
+import { Experience } from "@/types/experience";
 
 // Tech stack data - using your existing tech-icon library
 const techStack = [
