@@ -32,7 +32,7 @@ export default async function ProjectsPage(): Promise<ReactElement> {
   const systemProjects = projects.filter((project) => project.type === "system");
 
   return (
-    <div className="container mx-auto px-4 py-8 space-y-12">
+    <div className="container mx-auto px-6 py-8 space-y-12">
       <section>
         <div className="pl-1 pb-5">
           <Breadcrumbs
