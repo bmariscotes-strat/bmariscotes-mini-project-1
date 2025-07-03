@@ -8,7 +8,7 @@ export default function LayoutClientWrapper({ children }: { children: ReactNode 
   const pathname = usePathname();
 
   // Exclude routes with slugs
-  const showLoader = !pathname.startsWith("/projects");
+  const showLoader = !(pathname.startsWith("/projects") || pathname.startsWith("/about"));
 
   return (
     <>
