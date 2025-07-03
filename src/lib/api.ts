@@ -4,7 +4,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL as string;
 
 export interface Experience {
   id: string;
-  description: string;
+  desc: string;
   img?: string;
   startDate?: string;
   endDate?: string;

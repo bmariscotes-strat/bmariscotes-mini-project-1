@@ -58,7 +58,7 @@ export default function About() {
   };
 
   return (
-    <section className="pt-10 px-6">
+    <section className="pt-10 pb-10 px-6">
       {/* First Row - Profile Section */}
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-16">
         {/* Profile Image */}
@@ -111,12 +111,12 @@ export default function About() {
       </div>
 
       {/* Second Row - Tech Stack */}
-      <div className="max-w-6xl mx-auto mb-16">
-        <h2 className="text-2xl font-bold text-center mb-8">Tech Stack</h2>
+      <div className="max-w-6xl mx-auto mb-8">
+        <h2 className="text-3xl font-bold text-left sm:text-center text-primary mb-8">Tech Stack</h2>
 
         {/* Scrolling Tech Stack */}
         <div className="relative overflow-hidden">
-          <div className="flex animate-scroll space-x-4 pb-4">
+          <div className="flex animate-scroll space-x-4 pb-3">
             {/* Duplicate the array for seamless scrolling */}
             {[...techStack, ...techStack].map((tech, index) => (
               <div key={`${tech}-${index}`} className="flex-shrink-0">
@@ -131,7 +131,7 @@ export default function About() {
           </div>
         </div>
 
-        {/* Alternative: Static Grid Layout */}
+        {/* Alternative: Static Grid Layout
         <div className="hidden md:flex flex-wrap justify-center gap-4 mt-8">
           {techStack.map((tech) => (
             <TechnologyBadge
@@ -142,12 +142,12 @@ export default function About() {
               className="hover:shadow-md transition-all hover:scale-105"
             />
           ))}
-        </div>
+        </div> */}
       </div>
 
       {/* Third Row - Experiences Carousel */}
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-2xl font-bold text-center mb-8">Featured Experiences</h2>
+        <h2 className="text-3xl font-bold text-left mb-8 sm:text-center text-primary">Experiences</h2>
 
         {isLoading ? (
           <div className="flex justify-center items-center h-64">
@@ -167,12 +167,12 @@ export default function About() {
             <CarouselContent className="-ml-2 md:-ml-4">
               {experiences.map((experience) => (
                 <CarouselItem key={experience.id} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                  <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                  <div className="rounded-lg border overflow-hidden hover:shadow-xl transition-shadow">
                     {/* Experience Image */}
                     <div className="relative h-48 bg-gray-200">
                       {experience.img ? (
                         <Image
-                          src={`/${experience.img}`}
+                          src={`/media/experience/${experience.img}`}
                           alt={experience.company || "Company logo"}
                           fill
                           className="object-cover"
@@ -195,27 +195,33 @@ export default function About() {
 
                     {/* Experience Content */}
                     <div className="p-6">
-                      <h3 className="text-xl font-semibold mb-2">{experience.company}</h3>
+                      <h3 className="text-2xl font-semibold mb-2">{experience.company}</h3>
 
-                      {/* Company and Role */}
+                      {/* Role */}
                       {(experience.company || experience.role) && (
                         <div className="text-sm text-gray-600 mb-2">
                           {experience.role && <span className="font-medium">{experience.role}</span>}
-                          {experience.company && experience.role && <span> at </span>}
-                          {experience.company && <span>{experience.company}</span>}
                         </div>
                       )}
 
                       {/* Date Range */}
                       {(experience.startDate || experience.endDate) && (
                         <div className="text-sm text-gray-500 mb-3">
-                          {experience.startDate && new Date(experience.startDate).toLocaleDateString()}
+                          {experience.startDate &&
+                            new Date(experience.startDate).toLocaleDateString("en-US", {
+                              month: "short",
+                              year: "numeric",
+                            })}
                           {experience.startDate && experience.endDate && " - "}
-                          {experience.endDate && new Date(experience.endDate).toLocaleDateString()}
+                          {experience.endDate &&
+                            new Date(experience.endDate).toLocaleDateString("en-US", {
+                              month: "short",
+                              year: "numeric",
+                            })}
                         </div>
                       )}
 
-                      <p className="text-gray-600 mb-4 line-clamp-3">{experience.description}</p>
+                      <p className="text-gray-600 mb-4 line-clamp-3">{experience.desc}</p>
                     </div>
                   </div>
                 </CarouselItem>
@@ -226,26 +232,6 @@ export default function About() {
           </Carousel>
         )}
       </div>
-
-      {/* Custom CSS for scrolling animation */}
-      <style jsx>{`
-        @keyframes scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-
-        .animate-scroll {
-          animation: scroll 20s linear infinite;
-        }
-
-        .animate-scroll:hover {
-          animation-play-state: paused;
-        }
-      `}</style>
     </section>
   );
 }
