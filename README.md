@@ -4,6 +4,12 @@
 <div align="center">
 <h1> Biella Mariscotes
 </h1>
+
+  <a href="https://github.com/bmariscotes-strat/bmariscotes-mini-project-1/releases">
+    <img src="https://img.shields.io/github/v/release/bmariscotes-strat/bmariscotes-mini-project-1" alt="GitHub release" />
+  <a href="https://biella-dev.vercel.app">
+    <img src="https://img.shields.io/badge/Live%20Site-online-brightgreen" alt="live site" />
+  </a>
 </div>
 
 #### ˚ʚ♡ɞ˚ ‎ [View Live Site](https://biella-dev.vercel.app)
