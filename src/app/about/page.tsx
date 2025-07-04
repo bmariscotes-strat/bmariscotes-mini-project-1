@@ -8,6 +8,9 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { TechnologyBadge } from "@/lib/tech-icon";
 import { fetchExperiences } from "@/lib/api";
 import { Experience } from "@/types/experience";
+import { createPageMetadata } from "@/lib/metadata";
+
+export const metadata = createPageMetadata("About", "My information, experience and tech stack.");
 
 // Tech stack data - using your existing tech-icon library
 const techStack = [
