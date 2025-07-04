@@ -2,7 +2,7 @@
   <img src="public/brand/logo.png" alt="Logo" width="90" />
 </div>
 <div align="center">
-<h1> Biella Mariscotes
+<h1> Biella - Portfolio
 </h1>
 
   <a href="https://github.com/bmariscotes-strat/bmariscotes-mini-project-1/releases">
