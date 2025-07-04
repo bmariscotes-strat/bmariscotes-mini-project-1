@@ -3,64 +3,43 @@ import { Experience } from "@/types/experience";
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL as string;
 
-export async function fetchProjects(): Promise<Project[]> {
+async function fetchData<T>(endpoint: string): Promise<T> {
   try {
-    const response = await fetch(`${BASE_URL}/projects`, {
+    const response = await fetch(`${BASE_URL}${endpoint}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
-      next: { revalidate: 60 }, // Add cache revalidation for development
+      next: { revalidate: 60 }, // Cache revalidation
     });
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    const data: Project[] = await response.json();
-    return data;
+    return await response.json();
   } catch (error) {
-    console.error("Error fetching projects:", error);
+    console.error(`Error fetching ${endpoint}:`, error);
     throw error;
   }
+}
+
+export async function fetchProjects(): Promise<Project[]> {
+  return fetchData<Project[]>("/projects");
 }
 
 export async function fetchProjectBySlug(slug: string): Promise<Project> {
-  try {
-    const projects = await fetchProjects();
+  const projects = await fetchProjects();
 
-    // Find project by slug
-    const project = projects.find((p: Project) => p.slug === slug);
+  const project = projects.find((p) => p.slug === slug);
 
-    if (!project) {
-      throw new Error("Project not found");
-    }
-
-    return project;
-  } catch (error) {
-    console.error("Error fetching project by slug:", error);
-    throw error;
+  if (!project) {
+    throw new Error("Project not found");
   }
+
+  return project;
 }
 
 export async function fetchExperiences(): Promise<Experience[]> {
-  try {
-    const response = await fetch(`${BASE_URL}/experiences`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      next: { revalidate: 60 }, // Add cache revalidation for development
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const data: Experience[] = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Error fetching experiences:", error);
-    throw error;
-  }
+  return fetchData<Experience[]>("/experiences");
 }
