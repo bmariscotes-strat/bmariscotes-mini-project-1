@@ -10,6 +10,9 @@ gsap.registerPlugin(ScrollTrigger);
 
 export const metadata: Metadata = {
   title: "Biella | Portfolio",
+  icons: {
+    icon: "/favicon.ico",
+  },
   description: "A consolidated portfolio.",
 };
 
