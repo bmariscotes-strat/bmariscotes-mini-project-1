@@ -8,34 +8,13 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { TechnologyBadge } from "@/components/shared/TechBadge";
 import { fetchExperiences } from "@/lib/api";
 import { Experience } from "@/types/experience";
+import { techStack } from "@/const/tech-stack";
 
-// Tech stack data - using your existing tech-icon library
-const techStack = [
-  "React",
-  "Next.js",
-  "Vue.js",
-  "TypeScript",
-  "Javascript",
-  "Bootstrap",
-  "Tailwind CSS",
-  "Node.js",
-  "PostgreSQL",
-  "MySQL",
-  "MongoDB",
-  "Docker",
-  "AWS",
-  "Git",
-  "JavaScript",
-  "Python",
-  "Express",
-  "Firebase",
-  "Vercel",
-  "Figma",
-  "GSAP",
-];
-
-// Main component
 export default function About() {
+  /* ------------------------
+            SCRIPTS
+    ------------------------*/
+
   const { elementRef, handleMouseEnter, handleMouseLeave } = useRoughNotation();
   const [experiences, setExperiences] = useState<Experience[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -63,6 +42,9 @@ export default function About() {
     window.open("files/Resume.pdf", "_blank");
   };
 
+  /* ------------------------
+            MAIN PAGE
+    ------------------------*/
   return (
     <section className="pt-10 pb-10 px-6">
       {/* First Row - Profile Section */}

@@ -8,6 +8,10 @@ import Breadcrumbs from "@/components/shared/BreadCrumbsNav";
 export const metadata = createPageMetadata("Projects", "All of my projects.");
 
 export default async function ProjectsPage(): Promise<ReactElement> {
+  /* ------------------------
+            SCRIPTS
+    ------------------------*/
+
   let projects: Project[] = [];
   let error: string | null = null;
 
@@ -31,6 +35,9 @@ export default async function ProjectsPage(): Promise<ReactElement> {
   const uiProjects = projects.filter((project) => project.type === "ui");
   const systemProjects = projects.filter((project) => project.type === "system");
 
+  /* ------------------------
+            MAIN PAGE
+    ------------------------*/
   return (
     <div className="container sm:px-20 mx-auto px-6 py-8 space-y-12">
       <section>

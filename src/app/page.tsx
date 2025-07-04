@@ -8,6 +8,10 @@ import { usePathname } from "next/navigation";
 import gsap from "gsap";
 
 export default function HomePage() {
+  /* ------------------------
+            SCRIPTS
+    ------------------------*/
+
   useBodyBackground("bg-secondary");
 
   const logoRef = useRef<HTMLImageElement>(null);
@@ -46,6 +50,9 @@ export default function HomePage() {
     };
   }, [pathname]);
 
+  /* ------------------------
+            MAIN PAGE
+    ------------------------*/
   return (
     <div className="h-full no-scrollbar">
       <section ref={introRef} className="intro h-screen overflow-hidden">

@@ -10,6 +10,9 @@ import { Mail, Phone, Linkedin, Github, Instagram } from "lucide-react";
 import Breadcrumbs from "@/components/shared/BreadCrumbsNav";
 
 export default function ContactPage() {
+  /* ------------------------
+            SCRIPTS
+    ------------------------*/
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -40,6 +43,9 @@ export default function ContactPage() {
     }
   };
 
+  /* ------------------------
+            MAIN PAGE
+    ------------------------*/
   return (
     <section className="pt-10 px-6">
       <div className="max-w-6xl mx-auto ">
