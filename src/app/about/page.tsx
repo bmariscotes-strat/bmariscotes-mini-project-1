@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { useRoughNotation } from "../../hooks/useRoughNotation";
+import { useRoughNotation } from "@/hooks/useRoughNotation";
 import { Button } from "@/components/ui/Button";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/Carousel";
 import { TechnologyBadge } from "@/components/shared/TechBadge";
@@ -12,15 +12,14 @@ import { techStack } from "@/const/tech-stack";
 
 export default function About() {
   /* ------------------------
-            SCRIPTS
-    ------------------------*/
+   *        SCRIPTS
+   * ------------------------*/
 
   const { elementRef, handleMouseEnter, handleMouseLeave } = useRoughNotation();
   const [experiences, setExperiences] = useState<Experience[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Fetch experiences on component mount
   useEffect(() => {
     const loadExperiences = async () => {
       try {
@@ -43,8 +42,8 @@ export default function About() {
   };
 
   /* ------------------------
-            MAIN PAGE
-    ------------------------*/
+   *        MAIN PAGE
+   * ------------------------*/
   return (
     <section className="pt-10 pb-10 px-6">
       {/* First Row - Profile Section */}
@@ -118,19 +117,6 @@ export default function About() {
             ))}
           </div>
         </div>
-
-        {/* Alternative: Static Grid Layout
-        <div className="hidden md:flex flex-wrap justify-center gap-4 mt-8">
-          {techStack.map((tech) => (
-            <TechnologyBadge
-              key={tech}
-              technology={tech}
-              size="md"
-              showIcon={true}
-              className="hover:shadow-md transition-all hover:scale-105"
-            />
-          ))}
-        </div> */}
       </div>
 
       {/* Third Row - Experiences Carousel */}

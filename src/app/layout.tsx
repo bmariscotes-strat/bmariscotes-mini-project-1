@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import "../styles/globals.css";
-import Header from "../components/layout/Header";
+import "@/styles/globals.css";
+import Header from "@/components/layout/Header";
 import { kottaOne, karla, stangith } from "@/lib/fonts";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import LayoutClientWrapper from "../components/layout/LayoutClientWrapper";
+import LayoutClientWrapper from "@/components/layout/LayoutClientWrapper";
 
 gsap.registerPlugin(ScrollTrigger);
 

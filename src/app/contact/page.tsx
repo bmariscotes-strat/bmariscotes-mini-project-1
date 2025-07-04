@@ -11,8 +11,8 @@ import Breadcrumbs from "@/components/shared/BreadCrumbsNav";
 
 export default function ContactPage() {
   /* ------------------------
-            SCRIPTS
-    ------------------------*/
+   *        SCRIPTS
+   * ------------------------*/
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -44,11 +44,12 @@ export default function ContactPage() {
   };
 
   /* ------------------------
-            MAIN PAGE
-    ------------------------*/
+   *        MAIN PAGE
+   * ------------------------*/
   return (
     <section className="pt-10 px-6">
       <div className="max-w-6xl mx-auto ">
+        {/* Breadcrumbs */}
         <div className="pl-1 pb-5">
           <Breadcrumbs
             items={[
@@ -58,6 +59,7 @@ export default function ContactPage() {
           />
         </div>
 
+        {/* Contact Information */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
           <section className="flex flex-col items-start sm:items-center p-6 rounded-xl border bg-white shadow space-y-4">
             <div>
@@ -107,7 +109,7 @@ export default function ContactPage() {
             </div>
           </section>
 
-          {/* Form */}
+          {/* Leave a Message Form */}
           <section className="p-6 rounded-xl border bg-gray-50 shadow">
             {status === "success" ? (
               <div className="text-center space-y-4">

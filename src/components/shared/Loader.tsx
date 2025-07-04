@@ -1,4 +1,3 @@
-// components/Loader.tsx
 "use client";
 import { useEffect, useState } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
@@ -31,6 +30,7 @@ const Loader = () => {
         isVisible ? "opacity-100" : "opacity-0"
       }`}
     >
+      {/* Image */}
       <div className="relative flex items-center justify-center">
         <Image src="/brand/logo-w.png" alt="Logo" width={64} height={64} className="z-10" priority />
         <div className="absolute w-20 h-20 border-4 border-white/30 border-t-white rounded-full animate-spin"></div>

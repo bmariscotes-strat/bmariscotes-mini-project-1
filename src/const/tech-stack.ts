@@ -1,3 +1,5 @@
+/*  Constant data in About Page - Tech Stack section */
+
 export const techStack = [
   "React",
   "Next.js",

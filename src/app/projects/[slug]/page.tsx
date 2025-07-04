@@ -10,14 +10,18 @@ import { Badge } from "@/components/ui/Badge";
 import { TechnologiesList } from "@/components/shared/TechBadge";
 import clsx from "clsx";
 
-// Status badge renders
+/* ------------------------
+            SCRIPTS
+    ------------------------*/
+
+/* Metadata Configuration */
 const statusVariants: Record<string, "success" | "info" | "destructive"> = {
   complete: "success",
   ongoing: "info",
   discontinued: "destructive",
 };
 
-// Static paths generation
+/* Static Paths Generation */
 export async function generateStaticParams() {
   try {
     const projects = await fetchProjects();
@@ -30,13 +34,13 @@ export async function generateStaticParams() {
   }
 }
 
-// Metadata generation
+/* Metadata Configuration */
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   try {
     const { slug } = await params;
     const project = await fetchProjectBySlug(slug);
 
-    // Create a description that includes technologies if available
     const enhancedDescription = project.technologies
       ? `${project.description} Built with: ${project.technologies.join(", ")}`
       : project.description;
@@ -44,7 +48,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return {
       title: project.title,
       description: enhancedDescription,
-      keywords: project.technologies, // Add technologies as keywords for SEO
+      keywords: project.technologies,
       other: {
         status: project.status,
         ...(project.technologies && {
@@ -65,7 +69,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 }
 
-// Actual page
+/* ------------------------
+ *        MAIN PAGE
+ * ------------------------*/
 export default async function ProjectPage({ params }: PageProps) {
   const { slug } = await params;
   const project = await fetchProjectBySlug(slug);

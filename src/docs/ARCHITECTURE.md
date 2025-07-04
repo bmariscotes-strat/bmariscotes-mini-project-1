@@ -73,7 +73,7 @@ The component system follows a hierarchical structure:
 - **ARCHITECTURE.md** - This documentation file. Core documentation.
 - **Purpose**: Project documentation and architectural decisions
 - Detailed documentation of each files can be found in their respective subfolders within this directory.
-- ❗ **Note:** Documentation markdown files (.md) will use kebab-case naming, converting any camelCase filenames to kebab-case for consistency.
+- **Note:** Documentation markdown files (.md) will use kebab-case naming, converting any camelCase filenames to kebab-case for consistency.
 
 ### 3. Utilities (`src/hooks/` & `src/lib/`)
 
