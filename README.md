@@ -29,14 +29,14 @@ Key features:
 
 ## ⚙️ Tech Stack
 
-| Category           | Tools / Libraries                                                                                                  |
-| :----------------- | :----------------------------------------------------------------------------------------------------------------- |
-| Frontend           | [Next.js](https://nextjs.org/), [React](https://reactjs.org/), [TypeScript](https://www.typescriptlang.org/)       |
-| Styling            | [Tailwind CSS](https://tailwindcss.com/), [shadcn/ui](https://ui.shadcn.dev/), [Lucide Icons](https://lucide.dev/) |
-| Animations         | [Framer Motion](https://www.framer.com/motion/), [GSAP](https://greensock.com/gsap/)                               |
-| Fonts              | Google Fonts via `next/font`                                                                                       |
-| Forms & Validation | [Formspree](https://formspree.io/), Controlled Components, Custom Hooks                                            |
-| Hosting            | [Vercel](https://vercel.com/)                                                                                      |
+| Category           | Tools / Libraries                                                                                                                  |
+| :----------------- | :--------------------------------------------------------------------------------------------------------------------------------- |
+| Frontend           | [Next.js](https://nextjs.org/), [React](https://reactjs.org/), [TypeScript](https://www.typescriptlang.org/)                       |
+| Styling            | [Tailwind CSS](https://tailwindcss.com/), [shadcn/ui](https://ui.shadcn.dev/), [Lucide Icons](https://lucide.dev/)                 |
+| Animations         | [Framer Motion](https://www.framer.com/motion/), [GSAP](https://greensock.com/gsap/), [Rough Notation](https://roughnotation.com/) |
+| Fonts              | Google Fonts via `next/font`                                                                                                       |
+| Forms & Validation | [Formspree](https://formspree.io/), Controlled Components, Custom Hooks                                                            |
+| Hosting            | [Vercel](https://vercel.com/)                                                                                                      |
 
 <br>
 
