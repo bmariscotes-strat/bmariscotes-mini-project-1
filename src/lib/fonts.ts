@@ -17,6 +17,7 @@ export const kottaOne = Kotta_One({
   variable: "--font-kotta-one",
 });
 
+// Local Fonts
 export const stangith = localFont({
   src: "../../public/fonts/stangith.ttf",
   display: "swap",
