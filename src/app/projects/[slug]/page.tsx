@@ -6,7 +6,7 @@ import { Metadata } from "next";
 import { Button } from "@/components/ui/Button";
 import { PageProps } from "@/types/page";
 import Breadcrumbs from "@/components/shared/BreadCrumbsNav";
-import { Badge } from "@/components/ui/badge";
+import { Badge } from "@/components/ui/Badge";
 import { TechnologiesList } from "@/lib/tech-icon";
 import clsx from "clsx";
 
@@ -75,7 +75,7 @@ export default async function ProjectPage({ params }: PageProps) {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container sm:px-20 mx-auto px-4 py-8">
       <div className="pl-1 pb-5">
         <Breadcrumbs
           items={[{ label: "Home", href: "/" }, { label: "Projects", href: "/projects" }, { label: project.title }]}
@@ -143,7 +143,7 @@ export default async function ProjectPage({ params }: PageProps) {
           <div className="border-t pt-6 mt-6">
             <div className="flex gap-4">
               <a href={project.link} target="_blank" rel="noopener noreferrer">
-                <Button>{project.type === "ui" ? "View Figma" : "View Source Code"}</Button>
+                <Button className="cursor-pointer">{project.type === "ui" ? "View Figma" : "View Source Code"}</Button>
               </a>
             </div>
           </div>
