@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { PageProps } from "@/types/page";
 import Breadcrumbs from "@/components/shared/BreadCrumbsNav";
 import { Badge } from "@/components/ui/Badge";
-import { TechnologiesList } from "@/lib/tech-icon";
+import { TechnologiesList } from "@/components/shared/TechBadge";
 import clsx from "clsx";
 
 // Status badge renders
