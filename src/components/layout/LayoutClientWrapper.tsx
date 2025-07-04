@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import Loader from "./Loader";
+import Loader from "../shared/Loader";
 import { ReactNode, Suspense } from "react";
 
 export default function LayoutClientWrapper({ children }: { children: ReactNode }) {
