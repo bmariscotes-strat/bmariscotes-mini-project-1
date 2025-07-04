@@ -8,9 +8,6 @@ import { Loader2 } from "lucide-react";
 import Image from "next/image";
 import { Mail, Phone, Linkedin, Github, Instagram } from "lucide-react";
 import Breadcrumbs from "@/components/shared/BreadCrumbsNav";
-import { createPageMetadata } from "@/lib/metadata";
-
-export const metadata = createPageMetadata("Contact", "My contact information.");
 
 export default function ContactPage() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");

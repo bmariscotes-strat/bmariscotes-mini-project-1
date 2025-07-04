@@ -5,12 +5,9 @@ import { useState, useEffect } from "react";
 import { useRoughNotation } from "../../hooks/useRoughNotation";
 import { Button } from "@/components/ui/Button";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/Carousel";
-import { TechnologyBadge } from "@/lib/tech-icon";
+import { TechnologyBadge } from "@/components/shared/TechBadge";
 import { fetchExperiences } from "@/lib/api";
 import { Experience } from "@/types/experience";
-import { createPageMetadata } from "@/lib/metadata";
-
-export const metadata = createPageMetadata("About", "My information, experience and tech stack.");
 
 // Tech stack data - using your existing tech-icon library
 const techStack = [
