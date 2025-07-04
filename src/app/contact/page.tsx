@@ -47,7 +47,7 @@ export default function ContactPage() {
    *        MAIN PAGE
    * ------------------------*/
   return (
-    <section className="pt-10 px-6">
+    <section className="pt-10 pb-10 px-6">
       <div className="max-w-6xl mx-auto ">
         {/* Breadcrumbs */}
         <div className="pl-1 pb-5">
