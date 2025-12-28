@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/Textarea";
 import { Button } from "@/components/ui/Button";
 import { Loader2 } from "lucide-react";
 import Image from "next/image";
-import { Mail, Phone, Linkedin, Github, Instagram } from "lucide-react";
+import { Mail, Phone, Linkedin, Github } from "lucide-react";
 import Breadcrumbs from "@/components/shared/BreadCrumbsNav";
 
 export default function ContactPage() {
