@@ -74,17 +74,6 @@ export default function ContactPage() {
                 <Phone size={18} className="text-primary" /> 0976-336-3224
               </p>
               <p className="flex items-center gap-2">
-                <Instagram size={18} className="text-primary" />
-                <a
-                  href="https://instagram.com/love.biella"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:underline"
-                >
-                  instagram.com/love.biella
-                </a>
-              </p>
-              <p className="flex items-center gap-2">
                 <Linkedin size={18} className="text-primary" />
                 <a
                   href="https://linkedin.com/in/biellamariscotes"
