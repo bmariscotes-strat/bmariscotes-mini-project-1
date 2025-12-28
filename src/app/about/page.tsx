@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useRoughNotation } from "@/hooks/useRoughNotation";
-import { Button } from "@/components/ui/Button";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/Carousel";
 import { TechnologyBadge } from "@/components/shared/TechBadge";
 import { fetchExperiences } from "@/lib/api";
@@ -37,10 +36,6 @@ export default function About() {
 
     loadExperiences();
   }, []);
-
-  const handleResumeClick = () => {
-    window.open("files/Resume.pdf", "_blank");
-  };
 
   const toggleExpanded = (id: string | number) => {
     setExpandedCards((prev) => {
@@ -103,14 +98,9 @@ export default function About() {
                 <p>
                   A software engineer at LexisNexis Asia Pacific, building reliable web applications using modern
                   technologies alongside content management systems. I also take on freelance work and have experience
-                  with AI automation. Let's have a chat!
+                  with AI automation. Let&apos;s have a chat!
                 </p>
               </div>
-
-              {/* Commented this for now */}
-              {/* <Button variant="accent" className="cursor-pointer" onClick={handleResumeClick}>
-                See Resume
-              </Button> */}
             </div>
           </div>
         </div>
