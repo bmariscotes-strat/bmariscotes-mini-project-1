@@ -101,15 +101,16 @@ export default function About() {
 
               <div className="text-base space-y-2 mb-6">
                 <p>
-                  A graduating student with a keen interest in creating web applications that (hopefully) don’t crash. I
-                  am also exploring the fundamentals of machine learning and its potential applications in real-world
-                  scenarios.{" "}
+                  A software engineer at LexisNexis Asia Pacific, building reliable web applications using modern
+                  technologies alongside content management systems. I also take on freelance work and have experience
+                  with AI automation. Let's have a chat!
                 </p>
               </div>
 
-              <Button variant="accent" className="cursor-pointer" onClick={handleResumeClick}>
+              {/* Commented this for now */}
+              {/* <Button variant="accent" className="cursor-pointer" onClick={handleResumeClick}>
                 See Resume
-              </Button>
+              </Button> */}
             </div>
           </div>
         </div>
@@ -157,7 +158,7 @@ export default function About() {
         ) : (
           <Carousel className="w-full">
             <CarouselContent className="-ml-2 md:-ml-4">
-              {experiences.map((experience) => {
+              {experiences.map((experience, index) => {
                 const isExpanded = expandedCards.has(experience.id);
                 const shouldTruncate = experience.desc && experience.desc.length > 150;
 
@@ -200,20 +201,24 @@ export default function About() {
                           </div>
                         )}
 
-                        {/* Date Range */}
-                        {(experience.startDate || experience.endDate) && (
+                        {(experience.startDate || experience.endDate || index === 0) && (
                           <div className="text-sm text-gray-500 mb-3">
                             {experience.startDate &&
                               new Date(experience.startDate).toLocaleDateString("en-US", {
                                 month: "short",
                                 year: "numeric",
                               })}
-                            {experience.startDate && experience.endDate && " - "}
-                            {experience.endDate &&
-                              new Date(experience.endDate).toLocaleDateString("en-US", {
-                                month: "short",
-                                year: "numeric",
-                              })}
+
+                            {experience.startDate && (experience.endDate || index === 0) && " - "}
+
+                            {experience.endDate
+                              ? new Date(experience.endDate).toLocaleDateString("en-US", {
+                                  month: "short",
+                                  year: "numeric",
+                                })
+                              : index === 0
+                              ? "Present"
+                              : null}
                           </div>
                         )}
 

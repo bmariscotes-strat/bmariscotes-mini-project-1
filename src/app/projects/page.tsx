@@ -89,7 +89,7 @@ export default async function ProjectsPage(): Promise<ReactElement> {
 
         {/* UI Projects Section */}
         <section>
-          <h2 className="text-3xl text-gray-900 font-bold mb-4 pl-1">UI Projects</h2>
+          <h2 className="text-3xl text-gray-900 font-bold mb-4 pl-1">Web Design (UI) Projects</h2>
           {uiProjects.length === 0 ? (
             <p className="text-gray-600">No UI projects found.</p>
           ) : (
